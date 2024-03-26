@@ -31,23 +31,25 @@ print()
 """
 # řešení učitel
 
+import re
+
 def task1(source, output_name, trashold = 7):
-    print("čtení dat")
+    print("cteni dat")
     file_handler = open(source, "r")
     data = file_handler.read()
     file_handler.close()
 
-    print("předzpracování dat")
+    print("predzpracovani dat")
     output_data = []
-    split_data = data.split(" ")
+    split_data = re.split(r'\s+|entr',data)
     #print(type(split_data))
 
     print("filtrace dat")
     for word in split_data:
         if len(word) >= trashold:
-            output_data.append(word)
+            output_data.append(f"{word} ")
 
-    print("Zápis dat")
+    print("Zapis dat")
     file_handler = open(output_name, "w")
     file_handler.writelines(output_data)
     file_handler.close()
