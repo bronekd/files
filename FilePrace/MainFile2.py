@@ -31,4 +31,29 @@ print()
 """
 # řešení učitel
 
-def task1(source, output_name):
+def task1(source, output_name, trashold = 7):
+    print("čtení dat")
+    file_handler = open(source, "r")
+    data = file_handler.read()
+    file_handler.close()
+
+    print("předzpracování dat")
+    output_data = []
+    split_data = data.split(" ")
+    #print(type(split_data))
+
+    print("filtrace dat")
+    for word in split_data:
+        if len(word) >= trashold:
+            output_data.append(word)
+
+    print("Zápis dat")
+    file_handler = open(output_name, "w")
+    file_handler.writelines(output_data)
+    file_handler.close()
+    print("Finished")
+
+#task1(source:"source.txt", output_name:"output.txt")
+task1("source.txt", "output.txt")
+
+
